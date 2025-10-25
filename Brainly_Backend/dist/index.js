@@ -5,8 +5,10 @@ import { Jwt_Key } from "./config.js";
 import { ContentModel, Usermodel, LinkModel } from "./db.js";
 import { auth } from "./middleware.js";
 import { random } from "./hashGenerator.js";
+import cors from "cors";
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.post("/api/v1/signup", async (req, res) => {
     const { username, password } = req.body;
     try {
@@ -71,7 +73,7 @@ app.post("/api/v1/share", auth, async (req, res) => {
         res.json({ message: "Deleted Link" });
     }
 });
-app.get("/api/v1/:sharelink", auth, async (req, res) => {
+app.get("/api/v1/:sharelink", async (req, res) => {
     const hash = req.params.sharelink;
     const link = await LinkModel.findOne({ hash });
     if (!link) {

@@ -1,6 +1,6 @@
 import mongoose, { model, Schema } from "mongoose";
 
-mongoose.connect("mongodb+srv://sarveshmishraiit1981_db_user:etKy7CykTtMXyCC9@cluster0.2oxz38g.mongodb.net/");
+mongoose.connect("mongodb+srv://sarveshmishraiit1981_db_user:etKy7CykTtMXyCC9@cluster0.6i8vprh.mongodb.net/");
 
 const UserSchema = new Schema({
   username: { type: String, unique: true },

@@ -6,11 +6,11 @@ import { Jwt_Key } from "./config.js";
 import { ContentModel, Usermodel,LinkModel } from "./db.js";
 import { auth } from "./middleware.js";
 import { random } from "./hashGenerator.js";
-
+import cors from "cors"
 
 const app = express();
 app.use(express.json());
-
+app.use(cors())
 app.post("/api/v1/signup", async (req: Request, res: Response) => {
   const { username, password } = req.body;
   try {
